@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+html,
+p,
+strong,
+h1,
+h2,
+h3,
+h4,
+h5,
+th,
+td,
+tr {
+    font-family: "Nunito", serif;
+}
+
+strong,
+code,
+h2,
+h3,
+h4,
+h5,
+th,
+td,
+tr {
+    color: white !important;
+}
+
+li a{
+color: rgb(232, 180, 37) !important;
+}
+
+pre {
+    background: transparent !important;
+}

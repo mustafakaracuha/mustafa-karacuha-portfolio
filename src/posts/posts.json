@@ -1,0 +1,90 @@
+[
+    {
+        "id": 1,
+        "link": "ci-cd-entegrasyon",
+        "title": "CI/CD: Sürekli Entegrasyon ve Sürekli Teslimat",
+        "date": "2024-12-26T13:50:00",
+        "trDate": "26 Aralık 2024 13:50",
+        "author": "Mustafa Karaçuha",
+        "tag": "#CI/CD #Jenkins #DevOps #Otomasyon #Yazılım Geliştirme",
+        "sortDesc": "CI/CD, yazılım geliştirme süreçlerini otomatikleştiren ve geliştiren bir yöntemdir. Bu metodoloji, yazılım geliştirme, test etme ve dağıtım süreçlerini daha hızlı, güvenilir ve verimli hale getirmeyi amaçlar.",
+        "content": "ci-cd-entegrasyon.md"
+    },
+    {
+        "id": 2,
+        "link": "next-js-ve-ssr",
+        "title": "Next.js ve SSR: Performans ve SEO",
+        "date": "2024-12-27T14:03:00",
+        "trDate": "27 Aralık 2024 14:03",
+        "author": "Mustafa Karaçuha",
+        "tag": "#Next.js #React #SSR #SunucuTarafıRender #WebPerformansı #SEO",
+        "sortDesc": "Next.js, sunucu tarafı render (SSR) desteğiyle modern web uygulamalarında hem performans hem de SEO iyileştirmeleri sağlar. Bu yazıda SSR'ın ne olduğu ve Next.js ile nasıl kullanıldığı ele alınacaktır.",
+        "content": "next-js-ve-ssr.md"
+    },
+    {
+        "id": 3,
+        "link": "react-markdown-kullanimi",
+        "title": "React Markdown: Markdown Desteği ile Dinamik İçerikler",
+        "date": "2024-12-28T10:30:00",
+        "trDate": "28 Aralık 2024 10:30",
+        "author": "Mustafa Karaçuha",
+        "tag": "#ReactMarkdown #React #Markdown #Dinamikİçerik",
+        "sortDesc": "React Markdown, Markdown formatındaki metinleri kolayca işlemek ve görüntülemek için güçlü bir araçtır. Özellikle blog uygulamalarında oldukça faydalıdır.",
+        "content": "react-markdown-kullanimi.md"
+    },
+    {
+        "id": 5,
+        "link": "tailwind-css-kullanimi",
+        "title": "Tailwind CSS: Hızlı ve Esnek CSS Çerçevesi",
+        "date": "2024-12-30T11:20:00",
+        "trDate": "30 Aralık 2024 11:20",
+        "author": "Mustafa Karaçuha",
+        "tag": "#TailwindCSS #CSS #UI #KullanıcıArayüzü",
+        "sortDesc": "Tailwind CSS, hızlı ve esnek bir CSS çerçevesidir. CSS yazarken sıkça karşılaşılan tekrarları ve karmaşıklıkları ortadan kaldırarak geliştirme sürecini hızlandırır.",
+        "content": "tailwind-css-kullanimi.md"
+    },
+    {
+        "id": 6,
+        "link": "mikrofrontend-mimarisi-buyuk-olcekli-uygulama-gelistirme",
+        "title": "Mikrofrontend Mimarisi ile Büyük Ölçekli Uygulama Geliştirme",
+        "date": "2025-01-14T12:10:00",
+        "trDate": "14 Ocak 2025 12:10",
+        "author": "Mustafa Karaçuha",
+        "tag": "#Mikrofrontend #WebGeliştirme #UI #Frontend",
+        "sortDesc": "Mikrofrontend mimarisi, büyük ölçekli uygulamaların daha modüler, esnek ve bağımsız ekiplerce yönetilebilir bir yapıya kavuşmasını sağlar. Bu yazıda, mikrofrontend yapısının temelleri, avantajları ve uygulama araçları inceleniyor.",
+        "content": "mikrofrontend-mimarisi-buyuk-olcekli-uygulama-gelistirme.md"
+    },
+    {
+        "id": 7,
+        "link": "react-ve-redux-ile-durum-yonetimi",
+        "title": "React ve Redux ile Durum Yönetimi",
+        "date": "2025-01-14T14:28:00",
+        "trDate": "14 Ocak 2025 14:28",
+        "author": "Mustafa Karaçuha",
+        "tag": "#React #Redux #WebGeliştirme #DurumYönetimi",
+        "sortDesc": "React uygulamalarında durum yönetimini daha verimli hale getirmek için Redux kullanımı önemli avantajlar sunar. Bu yazıda, React ile Redux entegrasyonunun temelleri, en iyi uygulamalar ve pratik örnekler ele alınmaktadır.",
+        "content": "react-ve-redux-ile-durum-yonetimi.md"
+    },
+    {
+        "id": 8,
+        "link": "web-animasyonlari-ve-performans-yonetimi",
+        "title": "Web Animasyonları ve Performans Yönetimi",
+        "date": "2025-01-14T14:50:00",
+        "trDate": "14 Ocak 2025 14:50",
+        "author": "Mustafa Karaçuha",
+        "tag": "#WebAnimasyon #CSS #JavaScript #Performans",
+        "sortDesc": "Web animasyonları, kullanıcı deneyimini iyileştiren etkili bir araçtır, ancak doğru yönetilmezse performans sorunlarına yol açabilir. Bu yazıda, animasyonların uygulanması, performansın optimize edilmesi ve en iyi pratikler ele alınmaktadır.",
+        "content": "web-animasyonlari-ve-performans-yonetimi.md"
+    },
+    {
+        "id": 9,
+        "link": "mern-stack-ile-web-gelistirme",
+        "title": "MERN Stack ile Web Geliştirme",
+        "date": "2025-01-14T17:11:00",
+        "trDate": "14 Ocak 2025 17:11",
+        "author": "Mustafa Karaçuha",
+        "tag": "#MERNStack #ReactJS #MongoDB #ExpressJS #WebDevelopment",
+        "sortDesc": "MERN Stack, modern web geliştirme için popüler bir teknolojiler bütünüdür. Bu yazıda, React, MongoDB, Express ve Node.js kullanarak bir web uygulaması oluşturmanın temel adımları ve en iyi uygulamalar ele alınmaktadır.",
+        "content": "mern-stack-ile-web-gelistirme.md"
+    }
+]
