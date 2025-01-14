@@ -27,8 +27,6 @@ import SubscriptionsCardApp from "../assets/project/26.png";
 import ActionCardApp from "../assets/project/27.png";
 import DropdownMenuApp from "../assets/project/28.png";
 
-
-
 export const projects = [
     {
         title: "User JWT Authentication App",
