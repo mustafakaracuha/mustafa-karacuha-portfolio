@@ -1,8 +1,14 @@
-# React + Vite
+# Mustafa Karaçuha Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my portfolio! This website showcases my web development projects and blog posts, offering insights into my technical journey and expertise.
 
-Currently, two official plugins are available:
+## Features
+- **Projects**: A range of web development projects using technologies like React, Node.js, and MongoDB.
+- **Blog**: Articles on web development, technology trends, and personal experiences.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
+- **Frontend**: React, Tailwind CSS
+- **Backend**: Node.js, Express, MongoDB
+- **Hosting**: Vercel
+
+Check out the live site: [Mustafa Karaçuha Portfolio](https://mustafa-karacuha-portfolio.vercel.app/)
