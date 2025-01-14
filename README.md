@@ -6,4 +6,4 @@ Welcome to my portfolio! This website showcases my web development projects and 
 - **Frontend**: React, Tailwind CSS
 - **Hosting**: Vercel
 
-Check out the live site: [Mustafa Karaçuha Portfolio](https://mustafa-karacuha-portfolio.vercel.app/)
+Check out the live site: [Mustafa Karaçuha Portfolio](https://mustafa-karacuha.vercel.app/)
