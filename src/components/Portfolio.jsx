@@ -31,22 +31,33 @@ function Portfolio() {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 {currentProjects.map((project, index) => (
                     <motion.div
-                        initial={{ opacity: 0, y: -5 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.4, delay: index * 0.15 }}
-                        key={index}
-                        onClick={() => window.open(project.link, "_blank")}
-                        className="bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg cursor-pointer transform hover:scale-105 relative"
-                    >
-                        {project.isNew && <span className="absolute top-2 right-2 bg-amber-400 text-xs font-semibold text-gray-900 px-2 py-0.5 rounded">Yeni</span>}
-                        <div className="flex justify-center items-center mb-3">
-                            <img src={project.image} alt={project.title} className="w-20 h-20 object-cover rounded-md" />
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.15 }}
+                    key={index}
+                    onClick={() => window.open(project.link, "_blank")}
+                    className="bg-gray-800 p-3 rounded-md shadow-sm hover:shadow-md cursor-pointer transform hover:scale-105 relative sm:p-4 sm:rounded-lg"
+                >
+                    {project.isNew && (
+                        <span className="absolute top-2 right-2 bg-amber-400 text-[10px] font-semibold text-gray-900 px-1.5 py-0.5 rounded sm:text-xs">
+                            Yeni
+                        </span>
+                    )}
+                    <div className="flex items-center space-x-3 sm:flex-col sm:justify-center">
+                        <img
+                            src={project.image}
+                            alt={project.title}
+                            className="w-16 h-16 object-cover rounded-md sm:w-20 sm:h-20"
+                        />
+                        <div className="flex-1 mt-3 max-sm:mt-0 max-sm:text-left text-center">
+                            <h3 className="text-sm max-sm:text-sm  font-medium text-white truncate">
+                                {project.title}
+                            </h3>
+                            <p className="text-sm text-gray-400 max-sm:text-xs">{project.date}</p>
                         </div>
-                        <div className="text-center mt-4">
-                            <h3 className="text-sm font-medium text-white truncate">{project.title}</h3>
-                            <p className="text-xs text-gray-400 mt-1">{project.date}</p>
-                        </div>
-                    </motion.div>
+                    </div>
+                </motion.div>
+                
                 ))}
             </div>
             {/* Sayfalama */}
