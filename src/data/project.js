@@ -26,10 +26,18 @@ import PriceCardApp from "../assets/project/25.png";
 import SubscriptionsCardApp from "../assets/project/26.png";
 import ActionCardApp from "../assets/project/27.png";
 import DropdownMenuApp from "../assets/project/28.png";
+import HoroscopeApp from "../assets/project/29.png";
 
 export const projects = [
     {
-        title: "User JWT Authentication App",
+        title: "Burç Yorumları",
+        date: "15 Ocak 2025",
+        image: HoroscopeApp,
+        "isNew": true,
+        link: "https://horoscopes-app.vercel.app/",
+    },
+    {
+        title: "User Authentication App",
         date: "9 Ocak 2025",
         image: userAuthApp,
         "isNew": true,
