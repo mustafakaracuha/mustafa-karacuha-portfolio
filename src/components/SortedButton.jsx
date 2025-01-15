@@ -18,7 +18,7 @@ function SortedButton({ sortOrder, setSortOrder }) {
             >
                 En Eski
             </button>
-            <button onClick={() => navigate("/portfolio")} className={`py-2 px-3 rounded-lg text-sm max-sm:text-xs font-semibold transition duration-300 bg-gray-800 text-gray-300`}>
+            <button onClick={() => navigate("/projects")} className={`py-2 px-3 rounded-lg text-sm max-sm:text-xs font-semibold transition duration-300 bg-gray-800 text-gray-300`}>
                 Projeler
             </button>
         </div>

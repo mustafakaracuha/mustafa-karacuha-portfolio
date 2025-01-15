@@ -23,7 +23,7 @@ function Portfolio() {
                 <button onClick={() => navigate("/")} className="py-2 px-3 rounded-lg text-sm max-sm:text-xs font-semibold transition-all duration-300 bg-gray-800 text-gray-300">
                     Gönderiler
                 </button>
-                <button onClick={() => navigate("/")} className="py-2 px-3 rounded-lg text-sm max-sm:text-xs font-semibold transition-all duration-300 bg-yellow-500 text-white">
+                <button onClick={() => navigate("/projects")} className="py-2 px-3 rounded-lg text-sm max-sm:text-xs font-semibold transition-all duration-300 bg-yellow-500 text-white">
                     Projeler
                 </button>
             </div>

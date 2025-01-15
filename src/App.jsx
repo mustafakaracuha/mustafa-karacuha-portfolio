@@ -41,7 +41,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<PostList />} />
                     <Route path="/post/:postName" element={<BlogDetail />} />
-                    <Route path="/portfolio" element={<Portfolio />} />
+                    <Route path="/projects" element={<Portfolio />} />
                 </Routes>
 
                 <BackToTopButton showBackToTop={showBackToTop} scrollToTop={scrollToTop} />
