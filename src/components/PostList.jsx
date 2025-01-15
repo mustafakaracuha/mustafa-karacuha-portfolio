@@ -60,7 +60,7 @@ const PostList = () => {
                                 <Link
                                     title={post.title}
                                     to={`/post/${post.link}`}
-                                    className="text-lg w-96 max-sm:w-72  text-ellipsis whitespace-nowrap overflow-hidden max-sm:text-sm font-semibold text-gray-300 hover:text-amber-400"
+                                    className="text-lg w-96 max-sm:w-52  text-ellipsis whitespace-nowrap overflow-hidden max-sm:text-sm font-semibold text-gray-300 hover:text-amber-400"
                                 >
                                     {post.title}
                                 </Link>
