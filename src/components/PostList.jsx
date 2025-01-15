@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import posts from "../posts/posts.json";
 import colors from "../colors/colors.json";
 import SortedButton from "./SortedButton";
+import Pagination from "./Pagination";
 
 const PostList = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -47,11 +48,12 @@ const PostList = () => {
                 {currentPosts.map((post, index) => (
                     <motion.div
                         key={post.id}
-                        className="bg-slate-800 max-sm:p-4 p-6 rounded-xl transition-shadow duration-300"
+                        className="bg-slate-800 max-sm:p-4 p-6 rounded-xl transition-shadow duration-300 relative"
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.2 }}
                     >
+                        {post.isNew && <span className="absolute top-4 right-4 bg-amber-400 text-xs font-bold text-gray-900 px-2 py-1 rounded">Yeni</span>}
                         <div className="flex max-sm:flex-col items-center max-sm:items-baseline max-sm:space-y-4 justify-between">
                             <div className="flex items-center space-x-3 max-sm:space-x-0">
                                 <div className="w-8 h-8 rounded-xl max-sm:hidden" style={{ backgroundColor: getRandomColor() }}></div>
@@ -63,29 +65,17 @@ const PostList = () => {
                                     {post.title}
                                 </Link>
                             </div>
-
-                            <p className="text-xs font-semibold max-sm:text-gray-400 flex items-center gap-2 text-gray-400">
-                                {post.trDate}
-                            </p>
                         </div>
-                        <p className="text-gray-500  text-md max-sm:text-xs mt-4 text-ellipsis whitespace-nowrap overflow-hidden">{post.sortDesc}</p>
-                        <p className="text-gray-600 max-sm:hidden text-sm max-sm:text-xs mt-4">{post.tag}</p>
+                        <p className="text-gray-500 text-md max-sm:text-xs mt-4 max-w-xl text-ellipsis whitespace-nowrap overflow-hidden">{post.sortDesc}</p>
+                        <div className="flex items-center justify-between mt-4">
+                            <p className="text-gray-600 max-sm:hidden text-sm max-sm:text-xs">{post.tag}</p>
+                            <p className="text-xs font-semibold max-sm:text-gray-400 flex items-center gap-2 text-gray-400">{post.trDate}</p>
+                        </div>
                     </motion.div>
                 ))}
             </div>
-
             {/* Pagination */}
-            <div className="flex justify-center mt-6">
-                {Array.from({ length: Math.ceil(posts.length / postsPerPage) }, (_, index) => (
-                    <button
-                        key={index + 1}
-                        onClick={() => paginate(index + 1)}
-                        className={`py-2 px-3 mx-1 rounded-lg text-xs transition duration-300 ${currentPage === index + 1 ? "bg-amber-400 text-white" : "bg-gray-800 text-gray-300"}`}
-                    >
-                        {index + 1}
-                    </button>
-                ))}
-            </div>
+            <Pagination totalItems={posts.length} itemsPerPage={postsPerPage} currentPage={currentPage} onPageChange={paginate} />
         </div>
     );
 };

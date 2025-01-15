@@ -50,6 +50,7 @@
         "date": "2025-01-14T12:10:00",
         "trDate": "14 Ocak 2025 12:10",
         "author": "Mustafa Karaçuha",
+        "isNew": true,
         "tag": "#Mikrofrontend #WebGeliştirme #UI #Frontend",
         "sortDesc": "Mikrofrontend mimarisi, büyük ölçekli uygulamaların daha modüler, esnek ve bağımsız ekiplerce yönetilebilir bir yapıya kavuşmasını sağlar. Bu yazıda, mikrofrontend yapısının temelleri, avantajları ve uygulama araçları inceleniyor.",
         "content": "mikrofrontend-mimarisi-buyuk-olcekli-uygulama-gelistirme.md"
@@ -61,6 +62,7 @@
         "date": "2025-01-14T14:28:00",
         "trDate": "14 Ocak 2025 14:28",
         "author": "Mustafa Karaçuha",
+        "isNew": true,
         "tag": "#React #Redux #WebGeliştirme #DurumYönetimi",
         "sortDesc": "React uygulamalarında durum yönetimini daha verimli hale getirmek için Redux kullanımı önemli avantajlar sunar. Bu yazıda, React ile Redux entegrasyonunun temelleri, en iyi uygulamalar ve pratik örnekler ele alınmaktadır.",
         "content": "react-ve-redux-ile-durum-yonetimi.md"
@@ -72,6 +74,7 @@
         "date": "2025-01-14T14:50:00",
         "trDate": "14 Ocak 2025 14:50",
         "author": "Mustafa Karaçuha",
+        "isNew": true,
         "tag": "#WebAnimasyon #CSS #JavaScript #Performans",
         "sortDesc": "Web animasyonları, kullanıcı deneyimini iyileştiren etkili bir araçtır, ancak doğru yönetilmezse performans sorunlarına yol açabilir. Bu yazıda, animasyonların uygulanması, performansın optimize edilmesi ve en iyi pratikler ele alınmaktadır.",
         "content": "web-animasyonlari-ve-performans-yonetimi.md"
@@ -83,6 +86,7 @@
         "date": "2025-01-14T17:11:00",
         "trDate": "14 Ocak 2025 17:11",
         "author": "Mustafa Karaçuha",
+        "isNew": true,
         "tag": "#MERNStack #ReactJS #MongoDB #ExpressJS #WebDevelopment",
         "sortDesc": "MERN Stack, modern web geliştirme için popüler bir teknolojiler bütünüdür. Bu yazıda, React, MongoDB, Express ve Node.js kullanarak bir web uygulaması oluşturmanın temel adımları ve en iyi uygulamalar ele alınmaktadır.",
         "content": "mern-stack-ile-web-gelistirme.md"

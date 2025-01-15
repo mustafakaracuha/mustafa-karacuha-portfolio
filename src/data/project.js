@@ -32,12 +32,14 @@ export const projects = [
         title: "User JWT Authentication App",
         date: "9 Ocak 2025",
         image: userAuthApp,
+        "isNew": true,
         link: "https://user-auth-jwt.netlify.app/",
     },
     {
         title: "Sivas Web",
         date: "3 Hafta Önce",
         image: sivasApp,
+        "isNew": true,
         link: "https://sivas-web.vercel.app/",
     },
     {
