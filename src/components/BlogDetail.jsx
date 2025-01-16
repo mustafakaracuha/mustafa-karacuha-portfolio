@@ -51,7 +51,7 @@ const BlogDetail = ({isDarkMode}) => {
     };
 
     return (
-        <div className="w-full max-w-3xl lg:h-screen lg:overflow-auto mx-auto p-10 max-sm:p-2">
+        <div className="w-full max-w-3xl lg:h-screen lg:overflow-auto mx-auto max-sm:p-0 max-sm:mt-4 p-10">
             <button onClick={() => navigate("/")} className="ml-6 text-gray-200 rounded-md hover:text-amber-400 hover:underline transition duration-300">
                 Geri
             </button>
@@ -74,7 +74,7 @@ const BlogDetail = ({isDarkMode}) => {
                             );
                         },
                     }}
-                    className="flex-col items-center justify-center !max-w- !text-gray-400 !text-start max-sm:text-sm text-md prose mt-8"
+                    className="flex-col items-center justify-center !text-gray-400 !text-start max-sm:text-sm text-md prose mt-8"
                 >
                     {content}
                 </ReactMarkdown>
