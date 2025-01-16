@@ -29,21 +29,19 @@ const PostList = () => {
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth <= 640) { // max-sm ekran boyutu için
+            if (window.innerWidth <= 640) {
                 setPostsPerPage(6);
             } else {
-                setPostsPerPage(4); // Normalde 4
+                setPostsPerPage(4);
             }
         };
 
-        handleResize(); // Başlangıçta hemen çalıştır
-        window.addEventListener("resize", handleResize); // Boyut değiştikçe güncelleme yap
-
+        handleResize();
+        window.addEventListener("resize", handleResize);
         return () => {
-            window.removeEventListener("resize", handleResize); // Temizleme
+            window.removeEventListener("resize", handleResize);
         };
     }, []);
-
 
     const sortedPosts = [...posts].sort((a, b) => {
         if (sortOrder === "newest") {
