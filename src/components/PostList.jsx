@@ -41,7 +41,7 @@ const PostList = () => {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
-        <div className="w-full h-screen overflow-auto mx-auto px-20 max-sm:px-5 p-6 flex flex-col">
+        <div className="w-full h-screen overflow-auto mx-auto px-20 max-sm:px-3 p-6 flex flex-col">
             <SortedButton sortOrder={sortOrder} setSortOrder={setSortOrder} />
             {/* Post List */}
             <div className="space-y-4 mb-auto">

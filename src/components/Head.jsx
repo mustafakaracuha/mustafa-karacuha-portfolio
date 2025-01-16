@@ -103,9 +103,8 @@ function Head() {
                 </div>
             </div>
 
-            <div className="mt-auto text-sm max-sm:hidden text-gray-400">
+            <div className="mt-auto text-sm max-sm:hidden text-slate-700">
                 <p>© 2025 Mustafa Karaçuha</p>
-                <p>Son güncellenme: Ocak 2025</p>
             </div>
         </div>
     );
