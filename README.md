@@ -13,7 +13,7 @@ Check out the live site: [Mustafa Karaçuha Portfolio](https://mustafa-karacuha.
 Here’s a preview of how the portfolio looks on different devices:
 
 #### Web Version (Desktop)
-![Web Version](path-to-your-web-image.jpg)
+![Web Version](https://github.com/mustafakaracuha/mustafa-karacuha-portfolio/blob/main/src/assets/screenshots/1.png)
 
 #### Mobile Version
-![Mobile Version](path-to-your-mobile-image.jpg)
+![Mobile Version](https://github.com/mustafakaracuha/mustafa-karacuha-portfolio/blob/main/src/assets/screenshots/2.png)
