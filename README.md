@@ -7,3 +7,13 @@ Welcome to my portfolio! This website showcases my web development projects and 
 - **Hosting**: Vercel
 
 Check out the live site: [Mustafa Karaçuha Portfolio](https://mustafa-karacuha.vercel.app/)
+
+### Portfolio Preview
+
+Here’s a preview of how the portfolio looks on different devices:
+
+#### Web Version (Desktop)
+![Web Version](path-to-your-web-image.jpg)
+
+#### Mobile Version
+![Mobile Version](path-to-your-mobile-image.jpg)
