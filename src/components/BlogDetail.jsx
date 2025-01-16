@@ -51,7 +51,7 @@ const BlogDetail = ({isDarkMode}) => {
     };
 
     return (
-        <div className="max-w-3xl mx-auto p-6 max-sm:p-2">
+        <div className="w-full max-w-3xl lg:h-screen lg:overflow-auto mx-auto p-10 max-sm:p-2">
             <button onClick={() => navigate("/")} className="ml-6 text-gray-200 rounded-md hover:text-amber-400 hover:underline transition duration-300">
                 Geri
             </button>
@@ -74,17 +74,17 @@ const BlogDetail = ({isDarkMode}) => {
                             );
                         },
                     }}
-                    className="!text-gray-400 !text-start max-sm:text-sm text-md prose mt-8"
+                    className="flex-col items-center justify-center !max-w- !text-gray-400 !text-start max-sm:text-sm text-md prose mt-8"
                 >
                     {content}
                 </ReactMarkdown>
 
-                <div className="mt-6 flex items-center justify-between">
+                <div className="mt-6 flex items-center justify-start max-sm:justify-between">
                     <button onClick={handleShare} className="py-1 px-3 bg-amber-400 max-sm:text-sm text-white rounded-md hover:bg-amber-500 transition duration-300">
                         {copied ? <span className="text-white text-sm">Link kopyalandı!</span> : "Paylaş"}
                     </button>
 
-                    <div className="flex space-x-4">
+                    <div className="space-x-4 hidden max-sm:flex">
                         <a
                             href={`https://twitter.com/share?url=${window.location.href}`}
                             target="_blank"
@@ -110,7 +110,7 @@ const BlogDetail = ({isDarkMode}) => {
                     </div>
                 </div>
 
-                <div className="mt-8 flex justify-between items-center">
+                <div className="mt-8  hidden max-sm:flex justify-between items-center">
                     <p className="max-sm:text-xs text-gray-400 text-sm">{metaData.author}</p>
                     <div className="flex space-x-3">
                         {metaData.tag &&

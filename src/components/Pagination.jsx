@@ -4,7 +4,7 @@ const Pagination = ({ totalItems, itemsPerPage, currentPage, onPageChange }) => 
     const totalPages = Math.ceil(totalItems / itemsPerPage);
 
     return (
-        <div className="flex justify-center items-center mt-12 space-x-2">
+        <div className="flex justify-center items-center  mt-5 space-x-2">
             <button
                 onClick={() => currentPage > 1 && onPageChange(currentPage - 1)}
                 className={`py-2 px-3 rounded-lg text-xs transition duration-300 ${currentPage === 1 ? "bg-gray-700 text-gray-400" : "bg-gray-800 text-gray-300 hover:bg-amber-400 hover:text-white"}`}

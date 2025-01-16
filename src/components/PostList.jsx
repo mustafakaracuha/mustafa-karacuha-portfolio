@@ -10,7 +10,7 @@ import Pagination from "./Pagination";
 const PostList = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [sortOrder, setSortOrder] = useState("newest");
-    const postsPerPage = 5;
+    const postsPerPage = 4;
     let usedColors = [];
 
     const getRandomColor = () => {
@@ -41,14 +41,14 @@ const PostList = () => {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
-        <div className="max-w-3xl mx-auto p-6">
+        <div className="w-full h-screen overflow-auto mx-auto px-20 max-sm:px-5 p-6 flex flex-col">
             <SortedButton sortOrder={sortOrder} setSortOrder={setSortOrder} />
             {/* Post List */}
-            <div className="space-y-6">
+            <div className="space-y-4 mb-auto">
                 {currentPosts.map((post, index) => (
                     <motion.div
                         key={post.id}
-                        className="bg-slate-800 max-sm:p-4 p-6 rounded-xl transition-shadow duration-300 relative"
+                        className="bg-slate-900 border border-slate-800 max-sm:p-4 p-6 rounded-xl transition-shadow duration-300 relative"
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.2 }}
@@ -74,8 +74,11 @@ const PostList = () => {
                     </motion.div>
                 ))}
             </div>
-            {/* Pagination */}
-            <Pagination totalItems={posts.length} itemsPerPage={postsPerPage} currentPage={currentPage} onPageChange={paginate} />
+
+            {/* Pagination En Alta Sabit */}
+            <div className="mt-auto">
+                <Pagination totalItems={posts.length} itemsPerPage={postsPerPage} currentPage={currentPage} onPageChange={paginate} />
+            </div>
         </div>
     );
 };

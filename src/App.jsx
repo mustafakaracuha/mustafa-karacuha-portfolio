@@ -35,13 +35,13 @@ const App = () => {
 
     return (
         <Router>
-            <div className="min-h-screen bg-gray-900 font-sans">
+            <div className="min-h-screen bg-slate-900 font-sans flex max-sm:flex-col">
                 <Head />
 
                 <Routes>
                     <Route path="/" element={<PostList />} />
                     <Route path="/post/:postName" element={<BlogDetail />} />
-                    <Route path="/projects" element={<Portfolio />} />
+                    <Route path="/portfolio" element={<Portfolio />} />
                 </Routes>
 
                 <BackToTopButton showBackToTop={showBackToTop} scrollToTop={scrollToTop} />
