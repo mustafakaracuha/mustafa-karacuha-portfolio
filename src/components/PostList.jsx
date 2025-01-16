@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -10,7 +10,7 @@ import Pagination from "./Pagination";
 const PostList = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [sortOrder, setSortOrder] = useState("newest");
-    const postsPerPage = 4;
+    const [postsPerPage, setPostsPerPage] = useState(4);
     let usedColors = [];
 
     const getRandomColor = () => {
@@ -27,6 +27,24 @@ const PostList = () => {
         return randomColor;
     };
 
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 640) { // max-sm ekran boyutu için
+                setPostsPerPage(6);
+            } else {
+                setPostsPerPage(4); // Normalde 4
+            }
+        };
+
+        handleResize(); // Başlangıçta hemen çalıştır
+        window.addEventListener("resize", handleResize); // Boyut değiştikçe güncelleme yap
+
+        return () => {
+            window.removeEventListener("resize", handleResize); // Temizleme
+        };
+    }, []);
+
+
     const sortedPosts = [...posts].sort((a, b) => {
         if (sortOrder === "newest") {
             return new Date(b.date) - new Date(a.date);
@@ -41,7 +59,7 @@ const PostList = () => {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
-        <div className="w-full h-screen overflow-auto mx-auto px-20 max-sm:px-3 p-6 flex flex-col">
+        <div className="w-full mx-auto px-20 max-sm:px-3 p-6 flex flex-col">
             <SortedButton sortOrder={sortOrder} setSortOrder={setSortOrder} />
             {/* Post List */}
             <div className="space-y-4 mb-auto">
