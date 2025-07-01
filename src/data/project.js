@@ -28,8 +28,8 @@ import ActionCardApp from "../assets/project/27.png";
 import DropdownMenuApp from "../assets/project/28.png";
 import HoroscopeApp from "../assets/project/29.png";
 import ProductPageApp from "../assets/project/30.png";
-import LivaInsaatPage from "../assets/project/31.png";
-import LuminaFotografPage from "../assets/project/32.png";
+import LuminaFotografPage from "../assets/project/31.png";
+import LivaInsaatPage from "../assets/project/32.png";
 
 export const projects = [
   {
