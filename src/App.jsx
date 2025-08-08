@@ -35,14 +35,24 @@ const App = () => {
 
     return (
         <Router>
-            <div className="min-h-screen bg-slate-900 font-sans flex max-sm:flex-col">
+            <div className="min-h-screen font-sans flex max-sm:flex-col relative">
+                {/* Optimized background particles - sadece desktop'ta göster */}
+                <div className="fixed inset-0 overflow-hidden pointer-events-none hidden lg:block">
+                    <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full opacity-20 animate-pulse" style={{animationDelay: '0s'}}></div>
+                    <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-purple-400 rounded-full opacity-30 animate-pulse" style={{animationDelay: '1s'}}></div>
+                    <div className="absolute top-1/2 left-3/4 w-1.5 h-1.5 bg-pink-400 rounded-full opacity-25 animate-pulse" style={{animationDelay: '2s'}}></div>
+                    <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-cyan-400 rounded-full opacity-20 animate-pulse" style={{animationDelay: '3s'}}></div>
+                </div>
+
                 <Head />
 
-                <Routes>
-                    <Route path="/" element={<PostList />} />
-                    <Route path="/post/:postName" element={<BlogDetail />} />
-                    <Route path="/portfolio" element={<Portfolio />} />
-                </Routes>
+                <main className="flex-1 relative z-10 overflow-y-auto">
+                    <Routes>
+                        <Route path="/" element={<PostList />} />
+                        <Route path="/post/:postName" element={<BlogDetail />} />
+                        <Route path="/portfolio" element={<Portfolio />} />
+                    </Routes>
+                </main>
 
                 <BackToTopButton showBackToTop={showBackToTop} scrollToTop={scrollToTop} />
             </div>

@@ -2,53 +2,55 @@ import React from "react";
 
 const Pagination = ({ totalItems, itemsPerPage, currentPage, onPageChange }) => {
     const totalPages = Math.ceil(totalItems / itemsPerPage);
+    const pages = [];
+
+    for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+    }
+
+    if (totalPages <= 1) return null;
 
     return (
-        <div className="flex justify-center items-center  mt-5 space-x-2">
+        <div className="flex justify-center items-center space-x-2">
+            {/* Previous Button */}
             <button
-                onClick={() => currentPage > 1 && onPageChange(currentPage - 1)}
-                className={`py-2 px-3 rounded-lg text-xs transition duration-300 ${currentPage === 1 ? "bg-gray-700 text-gray-400" : "bg-gray-800 text-gray-300 hover:bg-amber-400 hover:text-white"}`}
+                onClick={() => onPageChange(currentPage - 1)}
                 disabled={currentPage === 1}
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                    currentPage === 1
+                        ? "glass-card text-white/30 cursor-not-allowed"
+                        : "glass-card text-white/70 hover:text-white hover:bg-white/10"
+                }`}
             >
-                &lt;
+                ←
             </button>
 
-            {Array.from({ length: totalPages }, (_, index) => {
-                const pageNumber = index + 1;
+            {/* Page Numbers */}
+            {pages.map((page) => (
+                <button
+                    key={page}
+                    onClick={() => onPageChange(page)}
+                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                        currentPage === page
+                            ? "btn-modern"
+                            : "glass-card text-white/70 hover:text-white hover:bg-white/10"
+                    }`}
+                >
+                    {page}
+                </button>
+            ))}
 
-                if (pageNumber === 1 || pageNumber === totalPages || (pageNumber >= currentPage - 1 && pageNumber <= currentPage + 1)) {
-                    return (
-                        <button
-                            key={pageNumber}
-                            onClick={() => onPageChange(pageNumber)}
-                            className={`py-2 px-3 rounded-lg text-xs transition duration-300 ${
-                                currentPage === pageNumber ? "bg-amber-400 text-white" : "bg-gray-800 text-gray-300 hover:bg-amber-400 hover:text-white"
-                            }`}
-                        >
-                            {pageNumber}
-                        </button>
-                    );
-                }
-
-                if (pageNumber === currentPage - 2 || pageNumber === currentPage + 2) {
-                    return (
-                        <span key={pageNumber} className="text-gray-500 px-2">
-                            ...
-                        </span>
-                    );
-                }
-
-                return null;
-            })}
-
+            {/* Next Button */}
             <button
-                onClick={() => currentPage < totalPages && onPageChange(currentPage + 1)}
-                className={`py-2 px-3 rounded-lg text-xs transition duration-300 ${
-                    currentPage === totalPages ? "bg-gray-700 text-gray-400" : "bg-gray-800 text-gray-300 hover:bg-amber-400 hover:text-white"
-                }`}
+                onClick={() => onPageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                    currentPage === totalPages
+                        ? "glass-card text-white/30 cursor-not-allowed"
+                        : "glass-card text-white/70 hover:text-white hover:bg-white/10"
+                }`}
             >
-                &gt;
+                →
             </button>
         </div>
     );

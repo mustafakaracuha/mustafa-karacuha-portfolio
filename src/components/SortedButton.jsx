@@ -1,28 +1,33 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
-function SortedButton({ sortOrder, setSortOrder }) {
-    const navigate = useNavigate();
-
+const SortedButton = ({ sortOrder, setSortOrder }) => {
     return (
-        <div className="flex justify-start space-x-3 mb-6">
-            <button
-                onClick={() => setSortOrder("newest")}
-                className={`py-2 px-3 rounded-lg text-sm max-sm:text-xs font-semibold transition duration-300 ${sortOrder === "newest" ? "bg-yellow-500 text-white" : "bg-gray-800 text-gray-300"}`}
-            >
-                En Yeni
-            </button>
-            <button
-                onClick={() => setSortOrder("oldest")}
-                className={`py-2 px-3 rounded-lg text-sm max-sm:text-xs font-semibold transition duration-300 ${sortOrder === "oldest" ? "bg-yellow-500 text-white" : "bg-gray-800 text-gray-300"}`}
-            >
-                En Eski
-            </button>
-            <button onClick={() => navigate("/portfolio")} className={`py-2 px-3 hidden max-sm:block rounded-lg text-sm max-sm:text-xs font-semibold transition duration-300 bg-gray-800 text-gray-300`}>
-                Portfolyo
-            </button>
+        <div className="mb-6 flex items-center space-x-4">
+            <span className="text-white/80 text-sm font-medium">Sıralama:</span>
+            <div className="flex space-x-2">
+                <button
+                    onClick={() => setSortOrder("newest")}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                        sortOrder === "newest"
+                            ? "btn-modern"
+                            : "glass-card text-white/70 hover:text-white hover:bg-white/10"
+                    }`}
+                >
+                    En Yeni
+                </button>
+                <button
+                    onClick={() => setSortOrder("oldest")}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                        sortOrder === "oldest"
+                            ? "btn-modern"
+                            : "glass-card text-white/70 hover:text-white hover:bg-white/10"
+                    }`}
+                >
+                    En Eski
+                </button>
+            </div>
         </div>
     );
-}
+};
 
 export default SortedButton;

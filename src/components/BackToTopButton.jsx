@@ -1,19 +1,18 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { FaArrowUp } from "react-icons/fa";
 
 const BackToTopButton = ({ showBackToTop, scrollToTop }) => {
     return (
-        showBackToTop && (
-            <motion.button
-                className="hidden max-sm:w-24 w-auto max-sm:text-sm h-10 fixed max-sm:bottom-20 max-sm:right-0 max-sm:left-0 max-sm:mx-auto bottom-10 right-10 text-md max-sm:flex items-center justify-center bg-gray-700 text-white p-4 rounded-full hover:bg-amber-400"
-                onClick={scrollToTop}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3 }}
-            >
-                Yukarı çık
-            </motion.button>
-        )
+        <>
+            {showBackToTop && (
+                <button
+                    onClick={scrollToTop}
+                    className="fixed bottom-6 right-6 z-50 w-12 h-12 glass-card rounded-full flex items-center justify-center text-white shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 group hover:scale-110"
+                >
+                    <FaArrowUp className="text-lg group-hover:text-purple-300 transition-colors duration-300" />
+                </button>
+            )}
+        </>
     );
 };
 

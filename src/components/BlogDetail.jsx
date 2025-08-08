@@ -1,126 +1,155 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
 import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { FaArrowLeft, FaCalendar, FaUser, FaTag } from "react-icons/fa";
 
-import moment from "moment";
 import posts from "../posts/posts.json";
-import { FaTwitter, FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 
-const BlogDetail = ({isDarkMode}) => {
+const BlogDetail = () => {
     const { postName } = useParams();
-    const [content, setContent] = useState("");
-    const [metaData, setMetaData] = useState({});
-    const [copied, setCopied] = useState(false);
     const navigate = useNavigate();
+    const [post, setPost] = useState(null);
+    const [content, setContent] = useState("");
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const post = posts.find((p) => p.link.toString() === postName);
-
-        if (post) {
-            setMetaData({
-                title: post.title,
-                date: post.trDate,
-                author: post.author,
-                tag: post.tag,
-            });
-
-            fetch(`/posts/${post.content}`)
-                .then((res) => res.text())
-                .then((data) => {
-                    setContent(data);
+        const foundPost = posts.find((p) => p.link === postName);
+        if (foundPost) {
+            setPost(foundPost);
+            fetch(`/posts/${foundPost.content}`)
+                .then((response) => response.text())
+                .then((text) => {
+                    setContent(text);
+                    setLoading(false);
                 })
-                .catch((err) => {
-                    console.error("İçerik yüklenirken bir hata oluştu.", err);
-                    setContent("İçerik yüklenirken bir hata oluştu.");
+                .catch((error) => {
+                    console.error("Error loading post:", error);
+                    setLoading(false);
                 });
+        } else {
+            setLoading(false);
         }
     }, [postName]);
 
-    const handleShare = () => {
-        const currentUrl = window.location.href;
-        navigator.clipboard.writeText(currentUrl).then(() => {
-            setCopied(true);
-            setTimeout(() => {
-                setCopied(false);
-            }, 2000);
-        });
-    };
+    if (loading) {
+        return (
+            <div className="w-full mx-auto px-8 max-sm:px-4 p-6 flex flex-col">
+                <div className="flex items-center justify-center py-20">
+                    <div className="glass-card p-8 rounded-xl text-center">
+                        <div className="w-8 h-8 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                        <p className="text-white/70">Yazı yükleniyor...</p>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    if (!post) {
+        return (
+            <div className="w-full mx-auto px-8 max-sm:px-4 p-6 flex flex-col">
+                <div className="flex items-center justify-center py-20">
+                    <div className="glass-card p-8 rounded-xl text-center">
+                        <h2 className="text-2xl font-bold text-white mb-4">Yazı bulunamadı</h2>
+                        <p className="text-white/70 mb-6">Aradığınız yazı mevcut değil.</p>
+                        <button
+                            onClick={() => navigate("/")}
+                            className="btn-modern"
+                        >
+                            Ana Sayfaya Dön
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
-        <div className="w-full max-w-3xl lg:h-screen lg:overflow-auto mx-auto max-sm:p-0 max-sm:mt-4 p-10">
-            <button onClick={() => navigate("/")} className="ml-6 text-gray-200 rounded-md hover:text-amber-400 hover:underline transition duration-300">
-                Geri
+        <div className="w-full mx-auto px-8 max-sm:px-4 p-6 flex flex-col">
+            {/* Back Button */}
+            <button
+                onClick={() => navigate("/")}
+                className="flex items-center space-x-2 text-white/70 hover:text-white transition-colors duration-300 mb-6 group"
+            >
+                <FaArrowLeft className="group-hover:text-purple-400 transition-colors duration-300" />
+                <span>Geri Dön</span>
             </button>
-            <div className="p-6">
-                <h2 className="text-xl max-sm:text-md font-semibold text-gray-200">{metaData.title}</h2>
-                <p className="text-gray-400 text-sm max-sm:text-sm mt-2"> {metaData.date}</p>
+
+            {/* Article Header */}
+            <div className="glass-card p-8 rounded-xl mb-8">
+                <h1 className="text-4xl max-sm:text-2xl font-bold mb-4">
+                    <span className="gradient-text">{post.title}</span>
+                </h1>
+                
+                <div className="flex flex-wrap items-center gap-6 text-white/70 mb-6">
+                    <div className="flex items-center space-x-2">
+                        <FaUser className="text-purple-400" />
+                        <span>{post.author}</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <FaCalendar className="text-blue-400" />
+                        <span>{post.trDate}</span>
+                    </div>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                    {post.tag.split(' ').map((tag, index) => (
+                        <span
+                            key={index}
+                            className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium text-white/80 border border-white/20"
+                        >
+                            {tag}
+                        </span>
+                    ))}
+                </div>
+            </div>
+
+            {/* Article Content */}
+            <div className="glass-card p-8 rounded-xl prose prose-invert prose-lg max-w-none">
                 <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
                     components={{
-                        code({ node, inline, className, children, ...props }) {
-                            const match = /language-(\w+)/.exec(className || "");
-                            return !inline && match ? (
-                                <SyntaxHighlighter style={dracula} language={match[1]} PreTag="div" {...props}>
-                                    {String(children).replace(/\n$/, "")}
-                                </SyntaxHighlighter>
-                            ) : (
-                                <code className="!bg-transparent" {...props}>
-                                    {children}
-                                </code>
-                            );
-                        },
+                        h1: ({ children }) => (
+                            <h1 className="text-3xl font-bold mb-6 gradient-text">{children}</h1>
+                        ),
+                        h2: ({ children }) => (
+                            <h2 className="text-2xl font-bold mb-4 gradient-text-secondary">{children}</h2>
+                        ),
+                        h3: ({ children }) => (
+                            <h3 className="text-xl font-bold mb-3 gradient-text-accent">{children}</h3>
+                        ),
+                        p: ({ children }) => (
+                            <p className="text-white/80 leading-relaxed mb-4">{children}</p>
+                        ),
+                        code: ({ children }) => (
+                            <code className="bg-white/10 px-2 py-1 rounded text-purple-300 font-mono text-sm">{children}</code>
+                        ),
+                        pre: ({ children }) => (
+                            <pre className="bg-gradient-to-r from-gray-900 to-gray-800 p-4 rounded-lg overflow-x-auto mb-4 border border-white/10">{children}</pre>
+                        ),
+                        blockquote: ({ children }) => (
+                            <blockquote className="border-l-4 border-purple-500 pl-4 italic text-white/70 mb-4">{children}</blockquote>
+                        ),
+                        ul: ({ children }) => (
+                            <ul className="list-disc list-inside text-white/80 mb-4 space-y-2">{children}</ul>
+                        ),
+                        ol: ({ children }) => (
+                            <ol className="list-decimal list-inside text-white/80 mb-4 space-y-2">{children}</ol>
+                        ),
+                        li: ({ children }) => (
+                            <li className="text-white/80">{children}</li>
+                        ),
+                        a: ({ href, children }) => (
+                            <a href={href} className="text-purple-400 hover:text-purple-300 underline transition-colors duration-300">{children}</a>
+                        ),
+                        strong: ({ children }) => (
+                            <strong className="font-bold text-white">{children}</strong>
+                        ),
+                        em: ({ children }) => (
+                            <em className="italic text-white/90">{children}</em>
+                        ),
                     }}
-                    className="flex-col items-center justify-center !text-gray-400 !text-start max-sm:text-sm text-md prose mt-8"
                 >
                     {content}
                 </ReactMarkdown>
-
-                <div className="mt-6 flex items-center justify-start max-sm:justify-between">
-                    <button onClick={handleShare} className="py-1 px-3 bg-amber-400 max-sm:text-sm text-white rounded-md hover:bg-amber-500 transition duration-300">
-                        {copied ? <span className="text-white text-sm">Link kopyalandı!</span> : "Paylaş"}
-                    </button>
-
-                    <div className="space-x-4 hidden max-sm:flex">
-                        <a
-                            href={`https://twitter.com/share?url=${window.location.href}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="max-sm:text-sm text-xl text-gray-300 hover:text-blue-500"
-                        >
-                            <FaTwitter />
-                        </a>
-                        <a href={`https://github.com/mustafakaracuha`} target="_blank" rel="noopener noreferrer" className="max-sm:text-sm text-xl  text-gray-300 hover:text-gray-400">
-                            <FaGithub />
-                        </a>
-                        <a
-                            href={`https://www.linkedin.com/shareArticle?mini=true&url=${window.location.href}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="max-sm:text-sm text-xl  text-gray-300 hover:text-blue-600"
-                        >
-                            <FaLinkedin />
-                        </a>
-                        <a href={`https://instagram.com/muskaracuha`} target="_blank" rel="noopener noreferrer" className="max-sm:text-sm text-xl text-gray-300 hover:text-pink-500">
-                            <FaInstagram />
-                        </a>
-                    </div>
-                </div>
-
-                <div className="mt-8  hidden max-sm:flex justify-between items-center">
-                    <p className="max-sm:text-xs text-gray-400 text-sm">{metaData.author}</p>
-                    <div className="flex space-x-3">
-                        {metaData.tag &&
-                            metaData.tag.split(",").map((tag, index) => (
-                                <span key={index} className="max-sm:text-xs text-sm text-gray-400 border border-gray-600 rounded px-2 py-1">
-                                    {tag.trim()}
-                                </span>
-                            ))}
-                    </div>
-                </div>
             </div>
         </div>
     );

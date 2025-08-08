@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 
 import posts from "../posts/posts.json";
 import colors from "../colors/colors.json";
@@ -57,41 +56,79 @@ const PostList = () => {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
-        <div className="w-full mx-auto px-20 max-sm:px-3 p-6 flex flex-col">
+        <div className="w-full mx-auto px-8 max-sm:px-4 p-6 flex flex-col">
+            {/* Header Section */}
+            <div className="mb-8">
+                <h1 className="text-4xl max-sm:text-2xl font-bold mb-2">
+                    <span className="gradient-text">Blog</span>
+                    <span className="text-white"> Yazıları</span>
+                </h1>
+                <p className="text-white/70 text-lg max-sm:text-base">  
+                    Teknoloji ve web geliştirme üzerine yazılarım
+                </p>
+            </div>
+
             <SortedButton sortOrder={sortOrder} setSortOrder={setSortOrder} />
+            
             {/* Post List */}
-            <div className="space-y-4 mb-auto">
+            <div className="space-y-6 mb-8">
                 {currentPosts.map((post, index) => (
-                    <motion.div
+                    <div
                         key={post.id}
-                        className="bg-slate-900 border border-slate-800 max-sm:p-4 p-6 rounded-xl transition-shadow duration-300 relative"
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.2 }}
+                        className="glass-card p-6 max-sm:p-4 card-hover relative overflow-hidden group"
                     >
-                        {post.isNew && <span className="absolute top-4 right-4 bg-amber-400 text-xs font-bold text-gray-900 px-2 py-1 rounded">Yeni</span>}
-                        <div className="flex max-sm:flex-col items-center max-sm:items-baseline max-sm:space-y-4 justify-between">
-                            <div className="flex items-center space-x-3 max-sm:space-x-0">
-                                <div className="w-8 h-8 rounded-xl max-sm:hidden" style={{ backgroundColor: getRandomColor() }}></div>
-                                <Link
-                                    title={post.title}
-                                    to={`/post/${post.link}`}
-                                    className="text-lg w-96 max-sm:w-60 text-ellipsis whitespace-nowrap overflow-hidden max-sm:text-sm font-semibold text-gray-300 hover:text-amber-400"
-                                >
-                                    {post.title}
-                                </Link>
+                        {/* Gradient overlay on hover */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        
+                        {post.isNew && (
+                            <span className="absolute top-4 right-4 bg-gradient-to-r from-amber-400 to-orange-500 text-xs font-bold text-gray-900 px-3 py-1 rounded-full shadow-lg">
+                                Yeni
+                            </span>
+                        )}
+                        
+                        <div className="relative z-10">
+                            <div className="flex max-sm:flex-col items-center max-sm:items-start max-sm:space-y-4 justify-between">
+                                <div className="flex items-center space-x-4 max-sm:space-x-3">
+                                    <div 
+                                        className="w-10 h-10 rounded-xl max-sm:w-8 max-sm:h-8 shadow-lg"
+                                        style={{ backgroundColor: getRandomColor() }}
+                                    ></div>
+                                    <Link
+                                        title={post.title}
+                                        to={`/post/${post.link}`}
+                                        className="text-xl w-96 max-sm:w-60 text-ellipsis whitespace-nowrap overflow-hidden max-sm:text-lg font-semibold text-white hover:gradient-text transition-all duration-300 group-hover:scale-105"
+                                    >
+                                        {post.title}
+                                    </Link>
+                                </div>
+                            </div>
+                            
+                            <p className="text-white/70 text-lg max-sm:text-base mt-4 max-w-2xl leading-relaxed">
+                                {post.sortDesc}
+                            </p>
+                            
+                            <div className="flex items-center justify-between mt-6">
+                                <div className="flex flex-wrap gap-2 max-sm:hidden">
+                                    {post.tag.split(' ').map((tag, tagIndex) => (
+                                        <span 
+                                            key={tagIndex}
+                                            className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-xs font-medium text-white/80 border border-white/20"
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                                <p className="text-sm font-semibold text-white/60 flex items-center gap-2">
+                                    <span className="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full"></span>
+                                    {post.trDate}
+                                </p>
                             </div>
                         </div>
-                        <p className="text-gray-500 text-md max-sm:text-xs mt-4 max-w-xl text-ellipsis whitespace-nowrap overflow-hidden">{post.sortDesc}</p>
-                        <div className="flex items-center justify-between mt-4">
-                            <p className="text-gray-600 max-sm:hidden text-sm max-sm:text-xs">{post.tag}</p>
-                            <p className="text-xs font-semibold max-sm:text-gray-400 flex items-center gap-2 text-gray-400">{post.trDate}</p>
-                        </div>
-                    </motion.div>
+                    </div>
                 ))}
             </div>
 
-            {/* Pagination En Alta Sabit */}
+            {/* Pagination */}
             <div className="mt-auto">
                 <Pagination totalItems={posts.length} itemsPerPage={postsPerPage} currentPage={currentPage} onPageChange={paginate} />
             </div>
