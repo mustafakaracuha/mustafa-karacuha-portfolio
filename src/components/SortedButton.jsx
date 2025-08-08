@@ -3,7 +3,6 @@ import React from "react";
 const SortedButton = ({ sortOrder, setSortOrder }) => {
     return (
         <div className="mb-6 flex items-center space-x-4">
-            <span className="text-white/80 text-sm font-medium">Sıralama:</span>
             <div className="flex space-x-2">
                 <button
                     onClick={() => setSortOrder("newest")}
