@@ -75,7 +75,7 @@ const PostList = () => {
                 {currentPosts.map((post, index) => (
                     <div
                         key={post.id}
-                        className="glass-card p-6 max-sm:p-4 card-hover relative overflow-hidden group"
+                        className="glass-card p-6 max-sm:p-4 relative overflow-hidden group"
                     >
                         {/* Gradient overlay on hover */}
                         <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -96,7 +96,7 @@ const PostList = () => {
                                     <Link
                                         title={post.title}
                                         to={`/post/${post.link}`}
-                                        className="text-xl w-96 max-sm:w-60 text-ellipsis whitespace-nowrap overflow-hidden max-sm:text-lg font-semibold text-white hover:gradient-text transition-all duration-300 group-hover:scale-105"
+                                        className="text-xl w-96 max-sm:w-60 text-ellipsis whitespace-nowrap overflow-hidden max-sm:text-lg font-semibold text-white hover:gradient-text transition-all duration-300"
                                     >
                                         {post.title}
                                     </Link>
