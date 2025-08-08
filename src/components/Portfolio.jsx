@@ -51,7 +51,7 @@ function Portfolio() {
                     <div
                         key={index}
                         onClick={() => window.open(project.link, "_blank")}
-                        className="glass-card p-4 rounded-xl shadow-lg cursor-pointer group relative overflow-hidden card-hover"
+                        className="glass-card p-4 rounded-xl shadow-lg cursor-pointer group relative overflow-hidden"
                     >
                         {/* Gradient overlay */}
                         <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-blue-500/5 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
